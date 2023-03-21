@@ -20,7 +20,7 @@
 </form> %>
 
 <%# Disabled view for this form %>
-<%= form_tag "/users" do %>
+<% form_tag "/users" do %>
   <div style="padding: 10px">
     <%= label_tag "user[username]", "Username:" %>
     <%= text_field_tag "user[username]" %>
@@ -41,3 +41,21 @@
   </div>
 <% end %>
 
+<%= form_with model: @user do |form| %>
+  <div style="padding: 10px">
+    <%= form.label :username, "Username:"%>
+    <%= form.text_field :username, placeholder: "John Doe" %>
+  </div>
+
+  <div style="padding: 10px">
+    <%= form.label :email, "Email:" %>
+    <%= form.email_field :email, placeholder: "foo@bar.com" %>
+  </div>
+
+  <div style="padding: 10px">
+    <%= form.label :password, "Password:" %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div><%= form.submit "Submit" %></div>
+<% end %>
