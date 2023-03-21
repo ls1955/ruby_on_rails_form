@@ -1,6 +1,6 @@
 <h1>Create a new user.</h1>
 
-<form action="/users" method="post" accept-charset="utf-8">
+<%# <form action="/users" method="post" accept-charset="utf-8">
   <div style="padding: 10px">
     <label for="user_username">Username:</label>
     <input type="text" name="user[username]" id="user_username">
@@ -17,4 +17,25 @@
   </div>
 
   <button type="submit">Submit</button>
-</form>
+</form> %>
+
+<%= form_tag "/users" do %>
+  <div style="padding: 10px">
+    <%= label_tag "user[username]", "Username:" %>
+    <%= text_field_tag "user[username]" %>
+  </div>
+
+  <div style="padding: 10px">
+    <%= label_tag "user[email]", "Email:" %>
+    <%= text_field_tag "user[email]" %>
+  </div>
+
+  <div style="padding: 10px">
+    <%= label_tag "user[password]", "Password:" %>
+    <%= text_field_tag "user[password]" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
